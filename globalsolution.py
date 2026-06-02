@@ -1,6 +1,6 @@
 import random 
 
-
+# lista para armazenar as contas cadastradas no sistema
 contas = []
 
 
@@ -46,7 +46,7 @@ def mostrar_tecnologias():
     for item in tecnologias:
         print("-", item)
 
-# Simula sensores agrícolas da propriedade
+# Simula sensores agrícolas da propriedade 
 def sensor_agricola():
 
     umidade = random.randint(40, 100)
