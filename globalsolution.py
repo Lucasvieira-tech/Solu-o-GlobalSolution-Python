@@ -223,8 +223,8 @@ while opcao != 0:
 
         case 8:
 
-            degradacao = int(input("Informe o nível de degradação (1 a 10): "))
-
+            
+            degradacao = int(input("Nível de degradação (1-10): "))
             print(
                 "Recomendação:",
                 recomendacao_personalizada(degradacao)
