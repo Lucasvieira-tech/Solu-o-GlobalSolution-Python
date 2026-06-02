@@ -1,12 +1,15 @@
-import random
+import random 
+
 
 contas = []
+
 
 alertas_agricolas = [
     "Risco de erosão identificado na propriedade.",
     "Nível de umidade acima do ideal.",
     "Possível contaminação da água detectada."
 ]
+
 
 historico_monitoramento = []
 
@@ -18,31 +21,32 @@ tecnologias = (
     "Aplicativo Mobile"
 )
 
-#FUNÇÕES
-
+# Função responsável por cadastrar uma conta
 def cadastrar(conta):
     contas.append(conta)
     print("Conta cadastrada com sucesso!")
 
-
+# Função para exibir qualquer lista do sistema
 def mostrar_lista(lista):
 
     if len(lista) == 0:
         print("Nenhuma informação disponível.")
 
     else:
+        # Percorre todos os itens da lista
         for item in lista:
             print(item)
 
-
+# Exibe as tecnologias utilizadas na plataforma
 def mostrar_tecnologias():
 
     print("\n=== Tecnologias Utilizadas ===")
 
+    # Percorre a tupla tecnologias
     for item in tecnologias:
         print("-", item)
 
-
+# Simula sensores agrícolas da propriedade
 def sensor_agricola():
 
     umidade = random.randint(40, 100)
@@ -54,7 +58,7 @@ def sensor_agricola():
     print("Temperatura:", temperatura, "°C")
     print("Risco de erosão:", erosao, "%")
 
-
+# Realiza uma análise simples da propriedade
 def analisar_propriedade():
 
     resultado = random.randint(1, 5)
@@ -74,7 +78,7 @@ def analisar_propriedade():
     else:
         return "Área afetada por enchente recente."
 
-
+# Gera recomendações conforme o nível de degradação
 def recomendacao_personalizada(degradacao):
 
     if degradacao <= 3:
@@ -86,7 +90,7 @@ def recomendacao_personalizada(degradacao):
     else:
         return "Hidroponia Emergencial"
 
-
+# Calcula o nível de recuperação da propriedade
 def calcular_recuperacao(umidade, erosao, vegetacao):
 
     nota = (umidade + vegetacao) - erosao
@@ -100,11 +104,11 @@ def calcular_recuperacao(umidade, erosao, vegetacao):
     else:
         return "Recuperação Inicial"
 
-
+# Salva uma análise no histórico
 def adicionar_historico(registro):
     historico_monitoramento.append(registro)
 
-
+# Exibe informações gerais da plataforma
 def dashboard():
 
     print("\n=== DASHBOARD ===")
@@ -113,7 +117,7 @@ def dashboard():
     print("Análises realizadas:", len(historico_monitoramento))
     print("Alertas registrados:", len(alertas_agricolas))
 
-
+# Gera um relatório das análises realizadas
 def gerar_relatorio():
 
     print("\n=== RELATÓRIO AGRÍCOLA ===")
@@ -122,21 +126,22 @@ def gerar_relatorio():
         print("Nenhum dado disponível.")
         return
 
+    # Percorre o histórico e exibe os resultados
     for item in historico_monitoramento:
 
         print("\nPropriedade:", item["propriedade"])
         print("Resultado:", item["resultado"])
 
-
-#MENU
-
+# Variável de controle do menu principal
 opcao = -1
 
+# Enquanto o usuário não escolher sair
 while opcao != 0:
 
     print("\n================================")
-    print("    ReCultiva")
+    print("      AGRO RECOVER RS")
     print("================================")
+
     print("1 - Sobre a plataforma")
     print("2 - Cadastrar conta")
     print("3 - Ver alertas agrícolas")
@@ -152,15 +157,16 @@ while opcao != 0:
 
     try:
         opcao = int(input("Escolha uma opção: "))
+
     except ValueError:
         print("Digite apenas números.")
         continue
 
+    # Estrutura responsável pelo menu
     match opcao:
 
         case 1:
-
-            print("\nA ReCultiva utiliza satélites, sensores e inteligência artificial")
+            print("\nA Agro Recover utiliza satélites, sensores e inteligência artificial")
             print("para auxiliar agricultores na recuperação de áreas afetadas")
             print("pelas enchentes ocorridas no Rio Grande do Sul.")
 
@@ -179,16 +185,13 @@ while opcao != 0:
             cadastrar(conta)
 
         case 3:
-
             print("\n=== ALERTAS ===")
             mostrar_lista(alertas_agricolas)
 
         case 4:
-
             mostrar_tecnologias()
 
         case 5:
-
             sensor_agricola()
 
         case 6:
@@ -215,20 +218,12 @@ while opcao != 0:
                 print("Nenhuma análise realizada.")
 
             else:
-
                 for item in historico_monitoramento:
-
-                    print(
-                        item["propriedade"],
-                        "-",
-                        item["resultado"]
-                    )
+                    print(item["propriedade"], "-", item["resultado"])
 
         case 8:
 
-            degradacao = int(
-                input("Informe o nível de degradação (1 a 10): ")
-            )
+            degradacao = int(input("Informe o nível de degradação (1 a 10): "))
 
             print(
                 "Recomendação:",
@@ -251,17 +246,13 @@ while opcao != 0:
             )
 
         case 10:
-
             dashboard()
 
         case 11:
-
             gerar_relatorio()
 
         case 0:
-
             print("Encerrando sistema...")
 
         case _:
-
             print("Opção inválida.")
